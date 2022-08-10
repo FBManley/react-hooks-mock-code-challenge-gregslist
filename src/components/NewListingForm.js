@@ -1,30 +1,13 @@
 import React, { useState } from "react"
-function NewListingForm({onAddListing}){
-    const [description, setDescription] = useState("")
-    const [image, setImage] = useState("")
-    const [location, setLocation] = useState("")
-     function handleSubmit(e){
-        e.preventDefault();
-        const formData = { description, image, location };
-        fetch("http://localhost:6001/listings", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData),
-        })
-        .then(r => r.json())
-        .then(newListing => {
-            onAddListing(newListing)
-        })
-     }
-    return <form onSubmit={handleSubmit}>
+function NewListingForm(){
+   
+    return <form >
         <label htmlFor="description">Description:</label>
-        <input type="text" id="description" value={description} onChange={e => setDescription(e.target.value)} />
+        <input type="text" id="description"  />
         <label htmlFor="image">image:</label>
-        <input type="text" id="image" value={image}  onChange={e => setImage(e.target.value)}/>
+        <input type="text" id="image" />
         <label htmlFor="local">location:</label>
-        <input type="text" id="location" value={location} onChange={e => setLocation()}/>
+        <input type="text" id="location" />
         <button type="submit">Add Listing</button>
     </form>
 }
